@@ -12,8 +12,8 @@ COPY ./requirements.txt ./
 RUN pip install -r requirements.txt && rm ./requirements.txt
 RUN pip install unidecode 
 
-COPY ./sunbird_vits-0.0.6a2-cp310-cp310-linux_x86_64.whl ./
-RUN python3.10 -m pip install sunbird_vits-0.0.6a2-cp310-cp310-linux_x86_64.whl
+COPY ./sunbird_vits-0.0.6a3-cp310-cp310-linux_x86_64.whl ./
+RUN python3.10 -m pip install sunbird_vits-0.0.6a3-cp310-cp310-linux_x86_64.whl
 # Setup container directories
 RUN mkdir /app
 
