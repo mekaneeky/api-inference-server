@@ -4,6 +4,8 @@ FROM huggingface/transformers-pytorch-gpu
 COPY ./requirements.txt ./
 RUN pip install -r requirements.txt && rm ./requirements.txt
 
+COPY sunbird_vits-0.0.6a7-cp310-cp310-linux_x86_64.whl ./
+RUN pip install sunbird_vits-0.0.6a7-cp310-cp310-linux_x86_64.whl
 # Setup container directories
 RUN mkdir /app
 
