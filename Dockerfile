@@ -1,11 +1,19 @@
-FROM huggingface/transformers-pytorch-gpu
+FROM python:3.10-slim
+
+# Needed for KenLM?
+RUN apt-get update
+
+RUN apt-get install -y --no-install-recommends build-essential libboost-all-dev cmake zlib1g-dev libbz2-dev liblzma-dev
+
+RUN apt-get install -y --no-install-recommends libboost-all-dev libeigen3-dev
 
 # Install libraries
 COPY ./requirements.txt ./
 RUN pip install -r requirements.txt && rm ./requirements.txt
+RUN pip install unidecode 
 
-COPY sunbird_vits-0.0.6a7-cp310-cp310-linux_x86_64.whl ./
-RUN pip install sunbird_vits-0.0.6a7-cp310-cp310-linux_x86_64.whl
+COPY ./sunbird_vits-0.0.6a2-cp310-cp310-linux_x86_64.whl ./
+RUN python3.10 -m pip install sunbird_vits-0.0.6a2-cp310-cp310-linux_x86_64.whl
 # Setup container directories
 RUN mkdir /app
 

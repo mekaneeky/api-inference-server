@@ -1,5 +1,5 @@
 import torchaudio
-from vits.training.hf_wrapper import VITSInfereceAdapterModel
+from training.hf_wrapper import VITSInfereceAdapterModel
 #from speechbrain.pretrained import Tacotron2
 #from speechbrain.pretrained import HIFIGAN
 import io
