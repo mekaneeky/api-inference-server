@@ -33,9 +33,9 @@ vits = VITSInfereceAdapterModel.from_pretrained( VITS_MODEL_TO_USE, G_net_path =
 torchaudio.set_audio_backend('soundfile')
 
 def tts(text):
-    mel_output = vits.encode_text(text, ["custom_cleaners"], ":;,!>\.\?")
+    sound_output = vits.encode_text(text, ["custom_cleaners"], ":;,!>\.\?")
     with io.BytesIO() as buffer:
-        torchaudio.save(buffer, waveforms.squeeze(1), VITS_SAMPLE_RATE, format='wav')
+        torchaudio.save(buffer, sound_output.squeeze(1), VITS_SAMPLE_RATE, format='wav')
         buffer.seek(0)
         encoded_audio = base64.b64encode(buffer.read())
         base64_string = encoded_audio.decode('utf-8')
