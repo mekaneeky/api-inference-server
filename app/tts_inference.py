@@ -33,7 +33,7 @@ vits = VITSInfereceAdapterModel.from_pretrained( VITS_MODEL_TO_USE, G_net_path =
 torchaudio.set_audio_backend('soundfile')
 
 def tts(text):
-    mel_output = vits.encode_text(text)
+    mel_output = vits.encode_text(text, ["custom_cleaners"], ":;,!>\.\?")
     with io.BytesIO() as buffer:
         torchaudio.save(buffer, waveforms.squeeze(1), VITS_SAMPLE_RATE, format='wav')
         buffer.seek(0)
