@@ -5,14 +5,12 @@ from training.hf_wrapper import VITSInfereceAdapterModel
 import io
 import base64
 
-
 # TACOTRON2_SAMPLE_RATE = 22050
 
 # tacotron2 = Tacotron2.from_hparams(source="Sunbird/sunbird-lug-tts")
 # hifi_gan = HIFIGAN.from_hparams(source="speechbrain/tts-hifigan-ljspeech")
 
 # torchaudio.set_audio_backend('soundfile')
-
 
 # def tts(text):
 #     mel_output, mel_length, alignment = tacotron2.encode_text(text)
@@ -25,7 +23,7 @@ import base64
 
 #     return base64_string
 
-VITS_SAMPLE_RATE = 22050
+VITS_SAMPLE_RATE = 22500
 VITS_MODEL_TO_USE = "Sunbird/VITS_Luganda_English_Studio"
 G_NET_FILENAME = "G_16000.pth"
 vits = VITSInfereceAdapterModel.from_pretrained( VITS_MODEL_TO_USE, G_net_path = G_NET_FILENAME, vocab_path="vocab.txt")
